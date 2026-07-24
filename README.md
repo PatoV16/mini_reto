@@ -2,14 +2,14 @@
 
 Prueba técnica full-stack: backend en **NestJS** que consulta la API pública de GitHub, y frontend en **Next.js** que consume ese endpoint para mostrar la información del perfil.
 
-## 🔗 Demo desplegada
+##  Demo desplegada
 
 - **Frontend (Vercel):** https://mini-reto.vercel.app
 - **Backend (Render):** https://mini-reto.onrender.com
 
-> ⚠️ **Nota importante:** el backend está desplegado en el plan gratuito de Render, que "duerme" el servicio tras 15 minutos de inactividad. Si el frontend tarda en cargar la primera vez, es porque el backend se está "despertando" (puede tardar hasta ~1 minuto). Si eso pasa, esperá unos segundos y recargá.
+>  **Nota importante:** el backend está desplegado en el plan gratuito de Render, que "duerme" el servicio tras 15 minutos de inactividad. Si el frontend tarda en cargar la primera vez, es porque el backend se está "despertando" (puede tardar hasta ~1 minuto). Si eso pasa, esperá unos segundos y recargá.
 
-## 🧱 Stack
+##  Stack
 
 | Parte | Tecnología |
 |---|---|
@@ -19,7 +19,7 @@ Prueba técnica full-stack: backend en **NestJS** que consulta la API pública d
 | Despliegue backend | Render (Free tier) |
 | Despliegue frontend | Vercel |
 
-## 📁 Estructura del repo (monorepo)
+##  Estructura del repo (monorepo)
 
 ```
 mini_reto/
@@ -28,7 +28,7 @@ mini_reto/
 └── README.md
 ```
 
-## 🚀 Backend — NestJS
+##  Backend — NestJS
 
 ### Endpoint
 
@@ -79,7 +79,7 @@ cd backend
 npm run test
 ```
 
-## 🎨 Frontend — Next.js
+##  Frontend — Next.js
 
 Muestra la información del perfil de GitHub (avatar, nombre, bio, repos públicos, seguidores, siguiendo, ubicación, empresa, blog y fecha de creación de la cuenta) consumiendo el endpoint del backend.
 
@@ -105,7 +105,7 @@ La app levanta en `http://localhost:3001` (o el puerto disponible, ya que el 300
 
 > Para correr el proyecto completo en local, es necesario tener **ambos servidores corriendo al mismo tiempo** (backend y frontend, en dos terminales distintas).
 
-## 📦 Despliegue
+##  Despliegue
 
 - **Backend:** desplegado en Render como Web Service, con Root Directory `backend`, build command `npm install && npm run build` y start command `npm run start:prod`.
 - <img width="1585" height="807" alt="image" src="https://github.com/user-attachments/assets/67ed0275-359b-4a86-88a6-22825635ce6e" />
@@ -114,6 +114,6 @@ La app levanta en `http://localhost:3001` (o el puerto disponible, ya que el 300
 - <img width="1582" height="726" alt="image" src="https://github.com/user-attachments/assets/9e2e544d-4026-46b8-96c5-75e963c58189" />
 
 
-## ✍️ Autor
+##  Autor
 
 Proyecto realizado como parte de una prueba técnica.
