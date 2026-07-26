@@ -19,8 +19,10 @@ export class UserService {
       response = await fetch(`${this.githubApiUrl}/${username}`, {
         headers: {
           Accept: 'application/vnd.github+json',
-          // Opcional: agregar token para evitar rate limit bajo
-          // Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          'User-Agent': 'mini-reto-app',
+          ...(process.env.GITHUB_TOKEN && {
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          }),
         },
       });
     } catch (error) {
@@ -36,6 +38,10 @@ export class UserService {
     }
 
     if (!response.ok) {
+      const errorBody = await response.text();
+      this.logger.error(
+        `GitHub API respondió ${response.status}: ${errorBody}`,
+      );
       throw new HttpException(
         'Error consultando la API de GitHub',
         HttpStatus.BAD_GATEWAY,
