@@ -108,10 +108,12 @@ La app levanta en `http://localhost:3001` (o el puerto disponible, ya que el 300
 ##  Despliegue
 
 - **Backend:** desplegado en Render como Web Service, con Root Directory `backend`, build command `npm install && npm run build` y start command `npm run start:prod`.
-- <img width="1585" height="807" alt="image" src="https://github.com/user-attachments/assets/67ed0275-359b-4a86-88a6-22825635ce6e" />
+- <img width="1912" height="817" alt="image" src="https://github.com/user-attachments/assets/3650b0ed-7bb8-4509-88f0-1921ac9e7d14" />
+
 
 - **Frontend:** desplegado en Vercel, con Root Directory `frontend` y la variable de entorno `NEXT_PUBLIC_API_URL` apuntando a la URL del backend en Render.
-- <img width="1582" height="726" alt="image" src="https://github.com/user-attachments/assets/9e2e544d-4026-46b8-96c5-75e963c58189" />
+- <img width="1890" height="796" alt="image" src="https://github.com/user-attachments/assets/0a265f0d-cca5-4241-a18e-c6dea03deb5e" />
+
 
 
 ##  Autor
