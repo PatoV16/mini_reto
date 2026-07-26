@@ -2,24 +2,24 @@
 
 Prueba técnica full-stack: backend en **NestJS** que consulta la API pública de GitHub, y frontend en **Next.js** que consume ese endpoint para mostrar la información del perfil.
 
-##  Demo desplegada
+## Demo desplegada
 
 - **Frontend (Vercel):** https://mini-reto.vercel.app
-- **Backend (Render):** https://mini-reto.onrender.com
+- **Backend (Railway):** https://minireto-production.up.railway.app
 
->  **Nota importante:** el backend está desplegado en el plan gratuito de Render, que "duerme" el servicio tras 15 minutos de inactividad. Si el frontend tarda en cargar la primera vez, es porque el backend se está "despertando" (puede tardar hasta ~1 minuto). Si eso pasa, esperá unos segundos y recargá.
+> **Nota:** el backend fue migrado de Render a Railway. El plan gratuito de Render "duerme" el servicio tras 15 minutos de inactividad, generando demoras y errores intermitentes en la primera carga (podía tardar hasta ~1 minuto en "despertar"). Railway no tiene ese comportamiento, por lo que la demo carga de forma consistente.
 
-##  Stack
+## Stack
 
 | Parte | Tecnología |
 |---|---|
 | Backend | NestJS + TypeScript |
 | Frontend | Next.js (App Router) + TypeScript |
 | Fuente de datos | [GitHub REST API](https://docs.github.com/en/rest/users/users) |
-| Despliegue backend | Render (Free tier) |
+| Despliegue backend | Railway |
 | Despliegue frontend | Vercel |
 
-##  Estructura del repo (monorepo)
+## Estructura del repo (monorepo)
 
 ```
 mini_reto/
@@ -28,7 +28,7 @@ mini_reto/
 └── README.md
 ```
 
-##  Backend — NestJS
+## Backend — NestJS
 
 ### Endpoint
 
@@ -66,6 +66,14 @@ npm run start:dev
 
 El servidor levanta en `http://localhost:3000`.
 
+### Variables de entorno (backend)
+
+Opcional pero recomendado, para evitar el rate limit de la API pública de GitHub:
+
+```
+GITHUB_TOKEN=tu_personal_access_token
+```
+
 ### Probar el endpoint
 
 ```bash
@@ -79,7 +87,7 @@ cd backend
 npm run test
 ```
 
-##  Frontend — Next.js
+## Frontend — Next.js
 
 Muestra la información del perfil de GitHub (avatar, nombre, bio, repos públicos, seguidores, siguiendo, ubicación, empresa, blog y fecha de creación de la cuenta) consumiendo el endpoint del backend.
 
@@ -91,7 +99,7 @@ Creá un archivo `.env.local` dentro de `frontend/`:
 NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
-En producción, esta variable apunta a la URL del backend desplegado en Render.
+En producción, esta variable apunta a la URL del backend desplegado en Railway (`https://minireto-production.up.railway.app`).
 
 ### Correr localmente
 
@@ -105,17 +113,16 @@ La app levanta en `http://localhost:3001` (o el puerto disponible, ya que el 300
 
 > Para correr el proyecto completo en local, es necesario tener **ambos servidores corriendo al mismo tiempo** (backend y frontend, en dos terminales distintas).
 
-##  Despliegue
+## Despliegue
 
-- **Backend:** desplegado en Render como Web Service, con Root Directory `backend`, build command `npm install && npm run build` y start command `npm run start:prod`.
-- <img width="1912" height="817" alt="image" src="https://github.com/user-attachments/assets/3650b0ed-7bb8-4509-88f0-1921ac9e7d14" />
+- **Backend:** desplegado en Railway, con Root Directory `backend`, build command `npm install && npm run build` y start command `npm run start:prod`. El puerto público está configurado en `8080` (Networking → Public Networking), mapeado a `process.env.PORT` en `main.ts`.
 
+<img width="1912" height="817" alt="image" src="https://github.com/user-attachments/assets/3650b0ed-7bb8-4509-88f0-1921ac9e7d14" />
 
-- **Frontend:** desplegado en Vercel, con Root Directory `frontend` y la variable de entorno `NEXT_PUBLIC_API_URL` apuntando a la URL del backend en Render.
-- <img width="1890" height="796" alt="image" src="https://github.com/user-attachments/assets/0a265f0d-cca5-4241-a18e-c6dea03deb5e" />
+- **Frontend:** desplegado en Vercel, con Root Directory `frontend` y la variable de entorno `NEXT_PUBLIC_API_URL` apuntando a la URL del backend en Railway.
 
+<img width="1890" height="796" alt="image" src="https://github.com/user-attachments/assets/0a265f0d-cca5-4241-a18e-c6dea03deb5e" />
 
-
-##  Autor
+## Autor
 
 Proyecto realizado como parte de una prueba técnica.
